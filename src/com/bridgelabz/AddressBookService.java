@@ -104,7 +104,7 @@ public class AddressBookService {
 		}
 		System.out.println("Contact Edited Successfully");
 	}
-
+//deletcontact
 	public void deleteContact(String name) {
 		for (int i = 0; i < contactlist.size(); i++) {
 			if (contactlist.get(i).getFirstName().equals(name)) {

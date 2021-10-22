@@ -1,5 +1,5 @@
 package com.bridgelabz;
-//model
+
 class Contact {
 	private String firstName;
 	private String lastName;
