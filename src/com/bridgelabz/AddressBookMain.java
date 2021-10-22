@@ -3,40 +3,30 @@ package com.bridgelabz;
 import java.util.Scanner;
 
 public class AddressBookMain {
-	Contacts contacts;
-	private void addContact() {
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Enter your first name :-");
-		String firstName = scan.nextLine();
-		System.out.println("Enter your Last name :-");
-		String lastName = scan.nextLine();
-		System.out.println("Enter The Address :- ");
-        String address = scan.nextLine();
-        System.out.println("Enter The City :- ");
-        String city = scan.nextLine();
-        System.out.println("Enter The State :- ");
-        String state = scan.nextLine();
-        System.out.println("Enter The Zip Code :- ");
-        int zipCode = scan.nextInt();
-        System.out.println("Enter The Mobile Number :- ");
-        String number = scan.next();
-        System.out.println("Enter The Email-id :- ");
-        String email = scan.next();
-        contacts = new Contacts(firstName, lastName, address, city, state, zipCode, number, email);
-        System.out.println("contact Sucussfully added");
-		
-	}
-	
-	public String toString() {
-		return contacts.toString();
-	}
-	
-	public static void main(String[] args) {
-        System.out.println("Welcome to Address Book System");
-        AddressBookMain addressBook = new AddressBookMain();
-        addressBook.addContact();
-         System.out.println(addressBook.toString());
-        
-    }
+	static AddressBookService service = new AddressBookService();
 
+	public static void main(String[] args) {
+		boolean isExit = false;
+		while (!isExit) {
+			Scanner scan = new Scanner(System.in);
+			System.out.println("Enter options \n 1.Add Contact.\n 2.Edit Contact.\n 3.Display Contact.\n 4.Exit.");
+			int userInput = scan.nextInt();
+			switch (userInput) {
+			case 1:
+				service.addNewContact();
+				break;
+			case 2:
+				service.editContact();
+				break;
+			case 3:
+				service.displayList();
+				break;
+			case 4:
+				isExit = true;
+				break;
+			default:
+				System.out.println("Please enter valid input");
+			}
+		}
+	}
 }
